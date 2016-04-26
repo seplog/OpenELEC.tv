@@ -1,0 +1,11 @@
+diff -Nur a/Makefile b/Makefile
+--- a/Makefile	2016-04-26 08:40:57.090126391 +0200
++++ b/Makefile	2016-04-26 08:41:39.642337396 +0200
+@@ -34,6 +34,7 @@
+ CFLAGS += $(shell pkg-config --cflags libnl-genl-3.0)
+ LIBS += $(shell pkg-config --libs libnl-genl-3.0)
+ LIBS+=-lasound
++LIBS+=-lpthread
+ endif
+ 
+ ifeq ($(OS),GNU/kFreeBSD)

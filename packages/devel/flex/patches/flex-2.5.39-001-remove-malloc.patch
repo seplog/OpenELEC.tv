@@ -1,0 +1,12 @@
+diff -Nur a/configure.ac b/configure.ac
+--- a/configure.ac	2016-04-25 18:35:26.977012113 +0200
++++ b/configure.ac	2016-04-25 18:35:46.533109086 +0200
+@@ -106,8 +106,6 @@
+ 
+ AC_FUNC_ALLOCA
+ AC_FUNC_FORK
+-AC_FUNC_MALLOC
+-AC_FUNC_REALLOC
+ AC_CHECK_FUNCS([dup2 isascii memset pow regcomp setlocale strchr strtol])
+ 
+ AC_CONFIG_FILES(

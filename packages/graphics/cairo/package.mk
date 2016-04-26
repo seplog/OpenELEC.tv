@@ -33,11 +33,13 @@ PKG_IS_ADDON="no"
 PKG_AUTORECONF="no" # ToDo
 
 if [ "$DISPLAYSERVER" = "x11" ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET libXrender libX11 mesa glu"
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET libXrender libX11 mesa glu libxcb"
   PKG_CAIRO_CONFIG="--x-includes="$SYSROOT_PREFIX/usr/include" \
                     --x-libraries="$SYSROOT_PREFIX/usr/lib" \
                     --enable-xlib \
                     --enable-xlib-xrender \
+                    --enable-xcb \
+                    --enable-xlib-xcb \
                     --enable-gl \
                     --enable-glx \
                     --disable-glesv2 \
@@ -48,6 +50,8 @@ if [ "$DISPLAYSERVER" = "x11" ]; then
 elif [ "$DISPLAYSERVER" = "weston" ]; then
   PKG_CAIRO_CONFIG="--disable-xlib \
                     --disable-xlib-xrender \
+                    --disable-xcb \
+                    --disable-xlib-xcb \
                     --disable-gl \
                     --disable-glx \
                     --enable-glesv2 \
@@ -64,8 +68,6 @@ PKG_CONFIGURE_OPTS_TARGET="$PKG_CAIRO_CONFIG \
                            --enable-atomic \
                            --disable-gcov \
                            --disable-valgrind \
-                           --disable-xcb \
-                           --disable-xlib-xcb \
                            --disable-xcb-shm \
                            --disable-qt \
                            --disable-quartz \
