@@ -25,7 +25,7 @@ post_install() {
   enable_service windowmanager.service
 }
 
-#post_makeinstall_target() {
-#  cp $PKG_DIR/config/init $INSTALL/usr/share/fluxbox/
-#  cp $PKG_DIR/config/keys $INSTALL/usr/share/fluxbox/
-#}
+post_makeinstall_target() {
+  cp $PKG_DIR/config/config $INSTALL/etc/i3/
+  cp $PKG_DIR/bin/i3-power $INSTALL/usr/bin/
+}

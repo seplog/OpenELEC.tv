@@ -1,0 +1,16 @@
+diff -Nur a/config.mk b/config.mk
+--- a/config.mk	2016-04-26 15:29:26.175660384 +0200
++++ b/config.mk	2016-04-26 15:32:20.096522811 +0200
+@@ -23,9 +23,9 @@
+ LIBS = -L${X11LIB} -lX11 ${XINERAMALIBS} ${FREETYPELIBS}
+ 
+ # flags
+-CPPFLAGS = -D_BSD_SOURCE -D_XOPEN_SOURCE=700 -D_POSIX_C_SOURCE=200809L -DVERSION=\"${VERSION}\" ${XINERAMAFLAGS}
+-CFLAGS   = -std=c99 -pedantic -Wall -Os ${INCS} ${CPPFLAGS}
+-LDFLAGS  = -s ${LIBS}
++CPPFLAGS = -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=700 -D_POSIX_C_SOURCE=200809L -DVERSION=\"${VERSION}\" ${XINERAMAFLAGS}
++CFLAGS   = -ansi -pedantic -Wall $(INCS) $(CPPFLAGS)
++LDFLAGS  = ${LIBS}
+ 
+ # compiler and linker
+ CC = cc

@@ -135,7 +135,7 @@
 
 # Windowmanager to use (ratpoison / fluxbox / none)
   WINDOWMANAGER="i3"
-  I3EXTRA="i3status"
+  I3EXTRA="i3status rxvt-unicode dmenu"
 
 # Xorg Graphic drivers to use (all / i915,i965,r200,r300,r600,nvidia)
 # Space separated list is supported,
