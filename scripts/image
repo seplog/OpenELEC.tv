@@ -159,6 +159,9 @@ fi
 # LCD support
   [ ! "$LCD_DRIVER" = "none" ] && $SCRIPTS/install lcdproc
 
+# Samba server
+  [ "$SAMBA_SERVER" = "yes" ] && $SCRIPTS/install samba
+
 # Installer support
   [ "$INSTALLER_SUPPORT" = "yes" ] && $SCRIPTS/install installer
 

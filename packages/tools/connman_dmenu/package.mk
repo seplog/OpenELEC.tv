@@ -22,5 +22,4 @@ make_target() {
 
 makeinstall_target() {
   make DESTDIR=$INSTALL
-  : # nop()
 }
