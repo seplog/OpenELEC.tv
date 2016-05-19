@@ -1,0 +1,12 @@
+diff -Nur a/config.mk b/config.mk
+--- a/config.mk	2016-05-11 19:19:04.954274422 +0200
++++ b/config.mk	2016-05-11 19:46:22.031915281 +0200
+@@ -13,7 +13,7 @@
+ XINERAMAFLAGS = -DXINERAMA
+ 
+ # freetype
+-FREETYPELIBS = -lfontconfig -lXft
++FREETYPELIBS = -lfreetype -lfontconfig -lXrender -lXft
+ FREETYPEINC = /usr/include/freetype2
+ # OpenBSD (uncomment)
+ FREETYPEINC = ${X11INC}/freetype2
