@@ -181,7 +181,7 @@
   SWAP_ENABLED_DEFAULT="yes"
 
 # swapfile size if SWAP_SUPPORT=yes in MB
-  SWAPFILESIZE="16384"
+  SWAPFILESIZE="128"
 
 # build with installer (yes / no)
   INSTALLER_SUPPORT="yes"

@@ -23,7 +23,7 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.samba.org"
 PKG_URL="http://samba.org/samba/ftp/stable/$PKG_NAME-$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain zlib connman"
+PKG_DEPENDS_TARGET="toolchain zlib"
 PKG_PRIORITY="optional"
 PKG_SECTION="network"
 PKG_SHORTDESC="samba: The free SMB / CIFS fileserver and client"
@@ -31,6 +31,12 @@ PKG_LONGDESC="Samba is a SMB server that runs on Unix and other operating system
 
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
+
+if [ "$DISTRO" = "KVMOS" ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET"
+else
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET connman"
+fi
 
 if [ "$AVAHI_DAEMON" = yes ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET avahi"
