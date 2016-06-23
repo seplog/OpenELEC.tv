@@ -26,6 +26,9 @@ post_install() {
 }
 
 post_makeinstall_target() {
-  cp $PKG_DIR/config/config $INSTALL/etc/i3/
+  mkdir -p $INSTALL/usr/config/i3
+  cp $PKG_DIR/config/config $INSTALL/usr/config/i3/
+  ln -sf /storage/.config/i3 $INSTALL/etc/i3
+
   cp $PKG_DIR/bin/i3-power $INSTALL/usr/bin/
 }

@@ -23,3 +23,12 @@ pre_configure_target() {
   cd $ROOT/$PKG_BUILD
   rm -rf .$TARGET_NAME
 }
+
+post_makeinstall_target() {
+
+  mkdir -p $INSTALL/usr/config
+  cp $PKG_DIR/config/dhcpcd.conf $INSTALL/usr/config/
+  rm -f $INSTALL/etc/dhcpcd.conf
+  ln -sf /storage/.config/dhcpcd.conf $INSTALL/etc/dhcpcd.conf
+
+}

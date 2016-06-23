@@ -19,5 +19,6 @@ PKG_CONFIGURE_OPTS_TARGET="--prefix=/usr \
                            --without-bash-malloc \
                            --with-installed-readline"
 post_makeinstall_target() {
-  ln -sf $SYSROOT_PREFIX/usr/bin/bash $ROOT/$TOOLCHAIN/bin/bash
+  mkdir $INSTALL/bin
+  ln -sf /usr/bin/bash $INSTALL/bin/
 }

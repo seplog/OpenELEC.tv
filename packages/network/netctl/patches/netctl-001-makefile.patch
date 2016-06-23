@@ -1,0 +1,49 @@
+diff -Nur a/Makefile b/Makefile
+--- a/Makefile	2016-06-21 12:44:34.786390420 +0200
++++ b/Makefile	2016-06-21 12:47:39.251305132 +0200
+@@ -9,17 +9,22 @@
+ .PHONY: install tarball pkgbuild clean
+ 
+ install:
+-	# Documentation
+-	$(MAKE) -C docs install
+ 	# Configuration files
+-	install -d $(DESTDIR)/etc/netctl/{examples,hooks,interfaces}
++	install -d $(DESTDIR)/etc/netctl/examples
++	install -d $(DESTDIR)/etc/netctl/hooks
++	install -d $(DESTDIR)/etc/netctl/interfaces
+ 	install -m644 docs/examples/* $(DESTDIR)/etc/netctl/examples/
+ 	# Libs
+-	install -d $(DESTDIR)/usr/lib/network/{connections,dhcp}
+-	install -m644 src/lib/{globals,ip,rfkill,wpa} $(DESTDIR)/usr/lib/network/
++	install -d $(DESTDIR)/usr/lib/network/connections
++	install -d $(DESTDIR)/usr/lib/network/dhcp
++	install -m644 src/lib/globals $(DESTDIR)/usr/lib/network/
++	install -m644 src/lib/ip $(DESTDIR)/usr/lib/network/
++	install -m644 src/lib/rfkill $(DESTDIR)/usr/lib/network/
++	install -m644 src/lib/wpa $(DESTDIR)/usr/lib/network/
+ 	install -m644 src/lib/connections/* $(DESTDIR)/usr/lib/network/connections/
+ 	install -m644 src/lib/dhcp/* $(DESTDIR)/usr/lib/network/dhcp/
+-	install -m755 src/lib/{auto.action,network} $(DESTDIR)/usr/lib/network/
++	install -m755 src/lib/auto.action $(DESTDIR)/usr/lib/network/
++	install -m755 src/lib/network $(DESTDIR)/usr/lib/network/
+ 	# Scripts
+ 	install -d $(DESTDIR)/usr/bin
+ 	sed -e "s|@systemdsystemconfdir@|$(systemdsystemconfdir)|g" \
+@@ -38,12 +43,14 @@
+ tarball: netctl-$(VERSION).tar.xz
+ netctl-$(VERSION).tar.xz:
+ 	$(MAKE) -B -C docs
+-	cp src/lib/globals{,.orig}
++	cp src/lib/globals
++	cp src/lib/globals.orig
+ 	sed -i "s|NETCTL_VERSION=.*|NETCTL_VERSION=$(VERSION)|" src/lib/globals
+ 	git stash save -q
+ 	git archive -o netctl-$(VERSION).tar --prefix=netctl-$(VERSION)/ stash
+ 	git stash pop -q
+-	mv src/lib/globals{.orig,}
++	mv src/lib/globals.orig
++	mv src/lib/globals
+ 	tar --exclude-vcs --transform "s|^|netctl-$(VERSION)/|" --owner=root --group=root --mtime=./netctl-$(VERSION).tar -rf netctl-$(VERSION).tar docs/*.[1-8]
+ 	xz netctl-$(VERSION).tar
+ 	gpg --detach-sign $@

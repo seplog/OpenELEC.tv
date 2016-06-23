@@ -21,3 +21,14 @@ pre_configure_target() {
   rm -rf .$TARGET_NAME
 }
 
+post_makeinstall_target() {
+  mkdir -p $INSTALL/usr/config
+  cp $PKG_DIR/config/resolvconf.conf $INSTALL/usr/config
+
+  rm -f $INSTALL/etc/resolvconf.conf
+
+  mkdir -p $INSTALL/etc
+  ln -sf /storage/.config/resolvconf.conf
+
+  ln -sf /run/network/resolv.conf $INSTALL/etc/resolv.conf
+}
