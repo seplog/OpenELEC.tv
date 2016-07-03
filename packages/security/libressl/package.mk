@@ -31,3 +31,9 @@ PKG_LONGDESC="LibreSSL is a FREE version of the SSL/TLS protocol forked from Ope
 
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="yes"
+
+post_makeinstall_target() {
+  cd $INSTALL/usr/lib
+  ln -sf libssl.so.35.0.0 libssl.so.1.0.0
+  ln -sf libcrypto.so.35.0.0 libcrypto.so.1.0.0
+}

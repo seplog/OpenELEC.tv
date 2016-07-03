@@ -16,39 +16,27 @@
 #  along with OpenELEC.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
 
-PKG_NAME="libjpeg-turbo"
-PKG_VERSION="1.4.2"
+PKG_NAME="jasper"
+PKG_VERSION="1.900.1"
 PKG_REV="1"
 PKG_ARCH="any"
-PKG_LICENSE="GPL"
-PKG_SITE="http://libjpeg-turbo.virtualgl.org/"
-PKG_URL="$SOURCEFORGE_SRC/libjpeg-turbo/$PKG_VERSION/$PKG_NAME-$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain"
+PKG_LICENSE="OpenSource"
+PKG_SITE="http://www.ece.uvic.ca/~mdadams/jasper/"
+PKG_URL="$DISTRO_SRC/$PKG_NAME-$PKG_VERSION.tar.bz2"
+PKG_DEPENDS_TARGET="toolchain libjpeg-turbo"
 PKG_PRIORITY="optional"
 PKG_SECTION="graphics"
-PKG_SHORTDESC="libjpeg-turbo: a high-speed version of libjpeg for x86 and x86-64 processors which uses SIMD instructions (MMX, SSE2, etc.) to accelerate baseline JPEG compression and decompression."
-PKG_LONGDESC="libjpeg-turbo is a high-speed version of libjpeg for x86 and x86-64 processors which uses SIMD instructions (MMX, SSE2, etc.) to accelerate baseline JPEG compression and decompression. libjpeg-turbo is generally 2-4x as fast as the unmodified version of libjpeg, all else being equal."
+PKG_SHORTDESC="jasper: JPEG-2000 Part-1 standard (i.e., ISO/IEC 15444-1) implementation"
+PKG_LONGDESC="This distribution contains the public release of the an open-source implementation of the ISO/IEC 15444-1 also known as JPEG-2000 standard for image compression."
 
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="yes"
 
-PKG_CONFIGURE_OPTS_HOST="--disable-static \
-                         --enable-shared \
-                         --without-simd"
-
-PKG_CONFIGURE_OPTS_TARGET="--disable-static --enable-shared"
-
-pre_configure_host() {
-  export CFLAGS="$CFLAGS -fPIC -DPIC"
-}
+PKG_CONFIGURE_OPTS_TARGET="--disable-shared --enable-static"
 
 pre_configure_target() {
   export CFLAGS="$CFLAGS -fPIC -DPIC"
 }
-
-if [ $SIMD_SUPPORT = "no" ]; then
-  PKG_CONFIGURE_OPTS_TARGET="$PKG_CONFIGURE_OPTS_TARGET --without-simd"
-fi
 
 post_makeinstall_target() {
   rm -rf $INSTALL/usr/bin
