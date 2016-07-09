@@ -1,0 +1,12 @@
+diff -Nur a/configure.in b/configure.in
+--- a/configure.in	2011-03-29 02:52:54.000000000 +0200
++++ b/configure.in	2016-07-08 15:25:26.128080013 +0200
+@@ -3,7 +3,7 @@
+ AC_CONFIG_HEADERS(libbridge/config.h)
+ 
+ AC_ARG_WITH( linux-headers, [  --with-linux-headers     Location of the linux headers to use], 
+-    KERNEL_HEADERS=$withval, KERNEL_HEADERS="/usr/src/linux/include")
++    KERNEL_HEADERS=$withval, KERNEL_HEADERS="./")
+ 
+ dnl Checks for programs.
+ AC_PROG_CC
