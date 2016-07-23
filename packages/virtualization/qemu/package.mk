@@ -83,3 +83,11 @@ PKG_CONFIGURE_OPTS_TARGET="--disable-bsd-user \
 export CXXFLAGS="$CXXFLAGS -I$SYSROOT_PREFIX/usr/include"
 export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include -I$SYSROOT_PREFIX/usr/include/SDL2"
 export LDFLAGS="$LDFLAGS -I$SYSROOT_PREFIX/usr/lib -lbz2 -lSDL2 -lbluetooth"
+
+post_install_target() {
+  mkdir -p $INSTALL/usr/config/sysctl.d
+  cp $PKG_DIR/config/hugepages.conf $INSTALL/usr/config/sysctl.d
+
+  mkdir -p $INSTALL/usr/config/qemu
+  ln -sf /storage/.config/qemu $INSTALL/etc/qemu
+}
