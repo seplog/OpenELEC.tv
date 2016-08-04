@@ -1,0 +1,12 @@
+diff -Nur a/communication.c b/communication.c
+--- a/communication.c	2011-12-15 21:02:47.000000000 +0100
++++ b/communication.c	2016-07-24 17:13:36.831305148 +0200
+@@ -282,7 +282,7 @@
+ 	}
+ close_file:
+ 	fclose(file);
+-	return 0;
++	return ret;
+ }
+ 
+ /* Gets executed after ebt_deliver_table. Delivers the counters to the kernel

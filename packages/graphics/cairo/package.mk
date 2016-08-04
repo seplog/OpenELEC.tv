@@ -23,7 +23,7 @@ PKG_ARCH="any"
 PKG_LICENSE="LGPL"
 PKG_SITE="http://cairographics.org/"
 PKG_URL="http://cairographics.org/releases/$PKG_NAME-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain zlib freetype fontconfig libpng pixman"
+PKG_DEPENDS_TARGET="toolchain zlib freetype fontconfig libpng pixman glib"
 PKG_PRIORITY="optional"
 PKG_SECTION="graphics"
 PKG_SHORTDESC="cairo: Multi-platform 2D graphics library"
@@ -94,10 +94,10 @@ PKG_CONFIGURE_OPTS_TARGET="$PKG_CAIRO_CONFIG \
                            --enable-pdf \
                            --enable-svg \
                            --disable-test-surfaces \
-                           --disable-tee \
+                           --enable-tee \
                            --disable-xml \
                            --enable-pthread \
-                           --disable-gobject \
+                           --enable-gobject \
                            --disable-full-testing \
                            --disable-trace \
                            --enable-interpreter \

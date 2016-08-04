@@ -1,0 +1,12 @@
+diff -Nur a/Makefile b/Makefile
+--- a/Makefile	2016-07-24 17:14:03.843439094 +0200
++++ b/Makefile	2016-07-24 20:01:57.153389941 +0200
+@@ -184,7 +184,7 @@
+ 	install -m 0755 -o root -g root ebtables-restore $(DESTDIR)$(BINDIR)/ebtables-restore
+ 
+ .PHONY: install
+-install: $(MANDIR)/man8/ebtables.8 $(DESTDIR)$(ETHERTYPESFILE) exec scripts
++install: $(DESTDIR)$(ETHERTYPESFILE) exec scripts
+ 	mkdir -p $(DESTDIR)$(LIBDIR)
+ 	install -m 0755 extensions/*.so $(DESTDIR)$(LIBDIR)
+ 	install -m 0755 *.so $(DESTDIR)$(LIBDIR)
