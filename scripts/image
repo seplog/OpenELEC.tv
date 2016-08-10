@@ -134,7 +134,7 @@ fi
   $SCRIPTS/install util-linux
   $SCRIPTS/install corefonts
   $SCRIPTS/install network
-  $SCRIPTS/install libvirt
+  $SCRIPTS/install virt-manager
 
 # Graphic support
   [ ! "$DISPLAYSERVER" = "no" ] && $SCRIPTS/install $DISPLAYSERVER
