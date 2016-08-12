@@ -27,6 +27,7 @@ PKG_CONFIGURE_OPTS_TARGET="ac_cv_header_ansidecl_h=no \
                            --disable-shared \
                            PYTHON_INCLUDES=$ROOT/$TOOLCHAIN/include/python2.7 \
                            --with-python=$SYSROOT_PREFIX/usr/bin/python \
+                           --with-python-install-dir=/usr/lib/python2.7/site-packages \
                            --with-libxml-prefix=$SYSROOT_PREFIX/usr \
                            --without-crypto"
 

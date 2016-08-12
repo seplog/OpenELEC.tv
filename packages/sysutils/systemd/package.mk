@@ -227,8 +227,7 @@ post_makeinstall_target() {
   rm -rf $INSTALL/etc/udev/rules.d
   ln -sf /storage/.config/udev.rules.d $INSTALL/etc/udev/rules.d
 
-  cd $INSTALL/usr/lib
-  ln -sf libsystemd.so libsystemd.so.0
+  ln -sf libsystemd.so $INSTALL/usr/lib/libsystemd.so.0
 }
 
 post_install() {

@@ -5,7 +5,7 @@ PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.qemu.org"
 PKG_URL="http://wiki.qemu.org/download/$PKG_NAME-$PKG_VERSION.tar.bz2"
-PKG_DEPENDS_TARGET="toolchain alsa-lib SDL2 curl libgcrypt bzip2 lzo libepoxy mesa libpng libjpeg-turbo gtk+ adwaita-icon-theme bluez spice virglrenderer libusb util-linux"
+PKG_DEPENDS_TARGET="toolchain alsa-lib SDL2 curl libgcrypt bzip2 lzo libepoxy mesa libpng libjpeg-turbo gtk+ adwaita-icon-theme bluez spice virglrenderer libusb util-linux usbredir"
 PKG_PRIORITY="optional"
 PKG_SECTION="virtualization"
 PKG_SHORTDESC="QEMU + Kernel-based Virtual Machine userland tools"
@@ -61,7 +61,7 @@ PKG_CONFIGURE_OPTS_TARGET="--disable-bsd-user \
                            --enable-spice \
                            --disable-libssh2 \
                            --enable-libusb \
-                           --disable-usb-redir \
+                           --enable-usb-redir \
                            --enable-uuid \
                            --disable-vde \
                            --enable-vhost-net \
