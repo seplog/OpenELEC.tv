@@ -5,7 +5,7 @@ PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.qemu.org"
 PKG_URL="http://wiki.qemu.org/download/$PKG_NAME-$PKG_VERSION.tar.bz2"
-PKG_DEPENDS_TARGET="toolchain alsa-lib SDL2 curl libgcrypt bzip2 lzo libepoxy mesa libpng libjpeg-turbo gtk+ adwaita-icon-theme bluez spice virglrenderer libusb util-linux usbredir"
+PKG_DEPENDS_TARGET="toolchain alsa-lib SDL2 curl libgcrypt bzip2 lzo libepoxy mesa libpng libjpeg-turbo gtk+ adwaita-icon-theme bluez spice virglrenderer libusb util-linux usbredir libaio"
 PKG_PRIORITY="optional"
 PKG_SECTION="virtualization"
 PKG_SHORTDESC="QEMU + Kernel-based Virtual Machine userland tools"
@@ -32,7 +32,7 @@ PKG_CONFIGURE_OPTS_TARGET="--disable-bsd-user \
                            --disable-tcg-interpreter \
                            --enable-attr \
                            --disable-brlapi \
-                           --disable-linux-aio \
+                           --enable-linux-aio \
                            --enable-bluez \
                            --disable-cap-ng \
                            --enable-curl \
@@ -82,7 +82,7 @@ PKG_CONFIGURE_OPTS_TARGET="--disable-bsd-user \
 
 export CXXFLAGS="$CXXFLAGS -I$SYSROOT_PREFIX/usr/include"
 export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include -I$SYSROOT_PREFIX/usr/include/SDL2"
-export LDFLAGS="$LDFLAGS -I$SYSROOT_PREFIX/usr/lib -lbz2 -lSDL2 -lbluetooth"
+export LDFLAGS="$LDFLAGS -I$SYSROOT_PREFIX/usr/lib -L$SYSROOT_PREFIX/usr/lib -lbz2 -lSDL2 -lbluetooth"
 
 post_install_target() {
   mkdir -p $INSTALL/usr/config/sysctl.d

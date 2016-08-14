@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [[ $@ == *"variable"* ]]
+if [[ $@ == *"variable="* ]]
 then
   echo -n $PKG_CONFIG_PREFIX
 fi

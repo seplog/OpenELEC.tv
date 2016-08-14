@@ -27,11 +27,13 @@
   /bin/busybox mkdir -p /flash
   /bin/busybox mkdir -p /sysroot
   /bin/busybox mkdir -p /storage
+  /bin/busybox mkdir -p /hugepages
 
   # mount all needed special filesystems
   /bin/busybox mount -t devtmpfs devtmpfs /dev
   /bin/busybox mount -t proc proc /proc
   /bin/busybox mount -t sysfs sysfs /sys
+  /bin/busybox mount -t hugetlbfs hugetlbfs /hugepages
 
   # set needed variables
   MODULE_DIR=/lib/modules
@@ -730,6 +732,7 @@
   /bin/busybox mount --move /dev /sysroot/dev
   /bin/busybox mount --move /proc /sysroot/proc
   /bin/busybox mount --move /sys /sysroot/sys
+  /bin/busybox mount --move /hugepages /sysroot/hugepages
 
   # tell OE settings addon to disable updates
   if [ "$UPDATE_DISABLED" = "yes" ] ; then
